@@ -1,0 +1,236 @@
+@font-face {
+    font-family: 'CiscoSansTT';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/font/CiscoSansTTRegular.woff2') format('woff2'),
+      url('../assets/font/CiscoSansTTRegular.woff') format('woff');
+    font-display: fallback;
+}
+
+* {
+    font-family: CiscoSansTT, Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    color: rgba(255,255,255,0.95);
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh; 
+}
+
+.desktop {
+    background: url('../assets/images/desktop.jpg') no-repeat center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.desktop_main {
+    width: 100vw;
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+}
+
+.desktop_main::before, .desktop_main::after{
+    content: '';
+    width: 100vh;
+    flex: 1;
+}
+
+.video_con {
+    position: absolute;
+    left: 69px;
+    top: 125px;
+    border-radius: 8px;
+    background-color: black;
+    display: block;
+    width: 748px;
+    height: 422px;
+}
+
+.client {
+    width: 886px;
+    height: 695px;
+    background: url('../assets/images/client.png') no-repeat center;
+    background-size: cover;
+    margin: auto auto;
+    flex: none;
+    position: relative;
+}
+
+.video_button {
+    position: absolute;
+    bottom: 93px;
+    left: 213px;
+    width: 153px;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 98px;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.video_button::before {
+    content: "";
+    flex: none;
+    width: 36px;
+    height: 100%;
+    background: url('../assets/images/camera-on.svg') no-repeat right center;
+}
+
+.video_button>span{
+    flex: 1;
+    display: block;
+    height: 38px;
+    line-height: 42px;
+    text-align: center;
+}
+
+.video_button>.menu_button{
+    flex: none;
+    display: block;
+    width: 28px;
+    height: 38px;
+    position: relative;
+}
+
+
+.video_button>.menu_button>i{
+    position: absolute;
+    left: 4px;
+    top:13px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: url('../assets/images/arrow-down.svg') no-repeat center;
+}
+
+.video_button .menu_button:hover, .video_button .menu_on{
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.video_button>.menu_on>i{
+    background: url('../assets/images/arrow-up.svg') no-repeat center!important;
+}
+
+.panel {
+    width: 298px;
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    background-color: black;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 24px 48px rgba(0, 0, 0, 0.2), 0px 0px 1px rgba(0, 0, 0, 0.12);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.panel>h1 {
+    height: 32px;
+    line-height: 32px;
+    color: white;
+    font-size: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.panel>h2 {
+    height: 32px;
+    line-height: 32px;
+    text-indent: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+}
+
+.panel>.panel_video_bar {
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    text-indent: 52px;
+    position: relative;
+    background: url('../assets/images/camera.svg') no-repeat 8px center;
+}
+
+.panel>.panel_video_bar::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 12px;
+    display: block;
+    width: 12px;
+    height: 50px;
+    background: url('../assets/images/arrow-down.svg') no-repeat center;
+}
+
+.panel_items {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.panel_items .item {
+    display: block;
+    flex: none;
+    width: 64px;
+    height: 36px;
+    border-radius: 7px;
+    border: 2px solid transparent;
+    box-shadow: 0 0 0 2px transparent;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 4px 3px;
+} 
+.panel_items .item:hover, .panel_items .item_selected{
+    box-shadow: 0 0 0 2px #64B4FA;
+}
+
+.task_bar {
+    flex: none;
+    width: 100vw;
+    height: 40px;
+    background: rgba(34, 34, 34, 0.88);
+    overflow: hidden;
+}
+
+.task_bar_left {
+    width: 1442px;
+    height: 40px;
+    background: url('../assets/images/task_bar.png') no-repeat left center;
+    background-size: cover;
+}
+.c_v {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+    left:0px;
+}
+
+#loading {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.8);
+    text-align: center;
+    line-height: 100vh;
+    font-size: 60px;
+    z-index: 999999;
+}
+
+#video {
+    display: none;
+    height: 100%;
+    width: 100%;
+}

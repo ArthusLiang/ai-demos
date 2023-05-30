@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AI - Webex Design</title>
+  <base href="/">
+  <!-- Google tag (gtag.js) -->
+  <link rel="stylesheet" href="./index.css" type="text/css" media="all" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+<body class="desktop">
+    <div id="loading">Waiting for Loading</div>
+    <div class="desktop_main">
+      <div class="client">
+        <div class="video_con">
+          <video id="video" autoplay></video>
+          <canvas style="display: none;" class="c_v" id="canvas_hide"></canvas>
+          <canvas class="c_v" id="canvas_background"></canvas>
+          <canvas class="c_v" id="canvas_person"></canvas>
+          <div id="panel" class="panel">
+            <h2>Camera</h2>
+            <div class="panel_video_bar">System Camera</div>
+            <h1>AI Effect</h1>
+            <div class="panel_items">
+              <img class="item item_selected" data-type="0" src="../assets/styles/style0.jpg" />
+              <img class="item" data-type="1" src="../assets/styles/style1.jpg" />
+              <img class="item" data-type="2" src="../assets/styles/style2.jpg" />
+              <img class="item" data-type="2" src="../assets/styles/style3.jpg" />
+              <img class="item" data-type="2" src="../assets/styles/style4.jpg" />
+              <img class="item" data-type="2" src="../assets/styles/style5.jpg" />
+            </div>
+            <h1>Background Image</h1>
+            <div class="panel_items">
+              <img class="item" data-type="3" src="../assets/styles/bg0.jpg" />
+              <img class="item" data-type="3" src="../assets/styles/bg1.jpg" />
+              <img class="item" data-type="3" src="../assets/styles/bg2.jpg" />
+              <img class="item" data-type="3" src="../assets/styles/bg3.jpg" />
+              <img class="item" data-type="3" src="../assets/styles/bg4.jpg" />
+              <img class="item" data-type="3" src="../assets/styles/bg5.jpg" />
+              <img class="item" data-type="3" src="../assets/styles/bg6.jpg" />
+            </div>
+          </div>
+        </div>
+        <a class="video_button" id="video_button"><span id="video_button_text">Start video</span><span id="video_button_menu" class="menu_button"><i></i></span></a>
+      </div>
+    </div>
+    <div class="task_bar">
+      <div class="task_bar_left"></div>
+    </div>
+    <script src="./index.ts"></script>
+</body>
+</html>
