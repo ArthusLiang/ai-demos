@@ -241,11 +241,12 @@ class WebexApp {
                     this.el_loading.style.display = 'none';
                 }
             };
-            tf.loadGraphModel(`style_transfer_tfjs/model.json`).then((m)=>{
+            let prefix = location.href.indexOf('/ai-demos/dist/')!==-1 ? 'ai-demos/dist/' : '';
+            tf.loadGraphModel(`${prefix}style_transfer_tfjs/model.json`).then((m)=>{
                 this.webexVideo.models.style = m;
                 callback();
             });
-            tf.loadGraphModel(`seg/model.json`).then((m)=>{
+            tf.loadGraphModel(`${prefix}seg/model.json`).then((m)=>{
                 this.webexVideo.models.segmenter = m;
                 console.log(m.inputs);
                 callback();

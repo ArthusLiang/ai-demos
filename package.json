@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "rm -rf ./dist/ && node tools/copy && node tools/clear && parcel ./src/index.html -p 32555 --https",
-    "build": "rm -rf ./dist/ && node tools/copy && parcel build ./src/index.html"
+    "build": "rm -rf ./dist/ && node tools/copy && parcel build ./src/index.html --public-url /ai-demos/dist/"
   },
   "repository": {
     "type": "git",
