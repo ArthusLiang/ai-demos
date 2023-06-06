@@ -3,6 +3,8 @@ import * as tf from '@tensorflow/tfjs';
 
 const REGJSON = /\.json$/i;
 const REGBIN = /\.bin$/i;
+const REGSEG = /\/seg\//i;
+const REGSTYLE = /\/style\//i;
 const VIDEO_W=240;
 const VIDEO_H=135;
 
@@ -238,22 +240,35 @@ class WebexApp {
         });
     }
 
-    loadModel() {
-        const files = Array.from(this.el_files.files);
+    _getFiles(_files:File[], regType: RegExp) {
+        let ret:any = [];
+        const files = _files.filter((file)=>{
+            return regType.test(file.webkitRelativePath)
+        });
         const _json = files.find((file)=>{
             return REGJSON.test(file.name);
         });
         const _bin = files.filter((file)=>{
-            return REGBIN.test(file.name)
+            return REGBIN.test(file.name);
         });
         if(_json && _bin.length>0) {
+            _bin.unshift(_json);
+            return _bin;
+        }
+        return ret;
+    }
+
+    loadModel() {
+        const files = Array.from(this.el_files.files);
+        let model_file_seg = this._getFiles(files, REGSEG);
+        let model_file_style = this._getFiles(files, REGSTYLE);
+
+        if(model_file_seg.length>0 && model_file_style.length>0) {
             this.el_h1.innerHTML === 'waiting for loading model';
-            _bin.unshift(_json)
-            console.log(_bin);
-            tf.loadGraphModel(tf.io.browserFiles(_bin)).then((m)=>{
+            tf.loadGraphModel(tf.io.browserFiles(model_file_style)).then((m)=>{
                 this.webexVideo.models.style = m;
-                let prefix = location.href.indexOf('/ai-demos/dist/')!==-1 ? 'ai-demos/dist/' : '';
-                tf.loadGraphModel(`${prefix}seg/model.json`).then((m)=>{
+                //let prefix = location.href.indexOf('/ai-demos/dist/')!==-1 ? 'ai-demos/dist/' : '';
+                tf.loadGraphModel(tf.io.browserFiles(model_file_seg)).then((m)=>{
                     this.webexVideo.models.segmenter = m;
                     this.el_loading.style.display = 'none';
                 });  
