@@ -1,6 +1,8 @@
 import '@tensorflow/tfjs-backend-webgl';
 import * as tf from '@tensorflow/tfjs';
 
+const REGJSON = /\.json$/i;
+const REGBIN = /\.bin$/i;
 const VIDEO_W=240;
 const VIDEO_H=135;
 
@@ -166,6 +168,8 @@ class WebexVideo {
 }
 
 class WebexApp {
+    el_h1: HTMLElement;
+    el_files: HTMLInputElement;
     el_body: HTMLElement;
     el_panel: HTMLElement;
     el_video_button: HTMLElement;
@@ -191,6 +195,8 @@ class WebexApp {
 
     init() {
         console.log('Webex Prototype');
+        this.el_h1 = document.getElementById('h1_loading') as HTMLElement;
+        this.el_files = document.getElementById('ipt_files') as HTMLInputElement;
         this.el_loading = document.getElementById('loading') as HTMLElement;
         this.el_body = document.querySelectorAll('body')[0];
         this.el_panel = document.getElementById('panel') as HTMLElement;
@@ -232,25 +238,36 @@ class WebexApp {
         });
     }
 
+    loadModel() {
+        const files = Array.from(this.el_files.files);
+        const _json = files.find((file)=>{
+            return REGJSON.test(file.name);
+        });
+        const _bin = files.filter((file)=>{
+            return REGBIN.test(file.name)
+        });
+        if(_json && _bin.length>0) {
+            this.el_h1.innerHTML === 'waiting for loading model';
+            _bin.unshift(_json)
+            console.log(_bin);
+            tf.loadGraphModel(tf.io.browserFiles(_bin)).then((m)=>{
+                this.webexVideo.models.style = m;
+                let prefix = location.href.indexOf('/ai-demos/dist/')!==-1 ? 'ai-demos/dist/' : '';
+                tf.loadGraphModel(`${prefix}seg/model.json`).then((m)=>{
+                    this.webexVideo.models.segmenter = m;
+                    this.el_loading.style.display = 'none';
+                });  
+            });
+        } else {
+            this.el_h1.innerHTML === 'Select a current model folder'
+        }
+    }
+
     initModel() {
         tf.ready().then(()=>{
-            let todo = 2;
-            let callback = ()=>{
-                todo--;
-                if(todo<=0) {
-                    this.el_loading.style.display = 'none';
-                }
-            };
-            let prefix = location.href.indexOf('/ai-demos/dist/')!==-1 ? 'ai-demos/dist/' : '';
-            tf.loadGraphModel(`${prefix}style_transfer_tfjs/model.json`).then((m)=>{
-                this.webexVideo.models.style = m;
-                callback();
-            });
-            tf.loadGraphModel(`${prefix}seg/model.json`).then((m)=>{
-                this.webexVideo.models.segmenter = m;
-                console.log(m.inputs);
-                callback();
-            });       
+            this.el_files.addEventListener('change', ()=> {
+                this.loadModel();
+            });      
         });
     }
 

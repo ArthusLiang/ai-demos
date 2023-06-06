@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "rm -rf ./dist/ && node tools/copy && node tools/clear && parcel ./src/index.html -p 32555 --https",
-    "build": "rm -rf ./dist/ && node tools/copy && parcel build ./src/index.html --public-url /ai-demos/dist/"
+    "build": "rm -rf ./dist/ && node tools/copy && parcel build ./src/index.html --public-url /ai-demos/dist/",
+    "build2": "rm -rf ./dist/ && node tools/copy && parcel build ./src/index.html"
   },
   "repository": {
     "type": "git",
@@ -22,11 +23,11 @@
     "@mediapipe/pose": "~0.4.0",
     "@mediapipe/selfie_segmentation": "~0.1.0",
     "@tensorflow-models/body-segmentation": "^1.0.1",
+    "@tensorflow/tfjs": "^3.13.0",
     "@tensorflow/tfjs-backend-wasm": "^3.13.0",
     "@tensorflow/tfjs-backend-webgl": "^3.13.0",
     "@tensorflow/tfjs-converter": "^3.13.0",
     "@tensorflow/tfjs-core": "^3.13.0",
-    "@tensorflow/tfjs": "^3.13.0",
     "typescript": "^5.0.4"
   },
   "devDependencies": {
