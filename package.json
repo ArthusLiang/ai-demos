@@ -5,8 +5,8 @@
   "main": "src/index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "rm -rf ./dist/ && node tools/clear && parcel ./src/index.html -p 32555 --https",
-    "build": "rm -rf ./dist/ && parcel build ./src/index.html --public-url /ai-demos/dist/",
+    "serve": "rm -rf ./dist/ && node tools/clear && parcel ./src/*.html -p 32555 --https",
+    "build": "rm -rf ./dist/ && parcel build ./src/*.html --public-url /ai-demos/dist/",
     "build2": "rm -rf ./dist/ && parcel build ./src/index.html"
   },
   "repository": {
@@ -28,6 +28,7 @@
     "@tensorflow/tfjs-backend-webgl": "^3.13.0",
     "@tensorflow/tfjs-converter": "^3.13.0",
     "@tensorflow/tfjs-core": "^3.13.0",
+    "jszip": "^3.10.1",
     "typescript": "^5.0.4"
   },
   "devDependencies": {

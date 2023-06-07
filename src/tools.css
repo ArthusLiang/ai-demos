@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'CiscoSansTT';
+    font-style: normal;
+    font-weight: normal;
+    src: url('../assets/font/CiscoSansTTRegular.woff2') format('woff2'),
+      url('../assets/font/CiscoSansTTRegular.woff') format('woff');
+    font-display: fallback;
+}
+
+* {
+    font-family: CiscoSansTT, Arial, Helvetica, sans-serif;
+    margin: 0px;
+    padding: 0px;
+    color: rgba(0,0,0,0.95);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+h1 {
+    margin: 20px;
+    font-size: 20px;
+}
+
+h2 {
+    margin: 20px;
+    font-size: 20px;
+    color: red;
+}
+
+input {
+    margin-left: 14px;
+}
+
+button {
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 7px 0 #bbbbbb, 0 8px 3px rgba(0, 0, 0, 0.2);
+    margin-left: 14px;
+    color: #666;
+    background-color: #EEE;
+    border-color: #EEE;
+    font-weight: 300;
+    font-size: 16px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 40px;
+    display: inline-block;
+    appearance: none;
+    cursor: pointer;
+    border: none;
+    box-sizing: border-box;
+    transition-property: all;
+    transition-duration: .3s;
+}
+
+button:hover {
+    background-color: #ddd;
+}
+
+.con {
+    position: relative;
+    max-width: 100vw;
+}
+
+.image_list {
+    max-width: 90%;
+    padding: 20px;
+}
+
+.image_list img, .image_list canvas{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.style_list img {
+    width: 200px;
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.95);
+    color: white;
+    text-align: center;
+    line-height: 100%;
+    font-size: 60px;
+}

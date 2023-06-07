@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AI - Webex Design</title>
+  <!-- Google tag (gtag.js) -->
+  <link rel="stylesheet" href="./tools.css" type="text/css" media="all" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+</head>
+<body>
+    <div class="con">
+        <h1>Please select a local ai model<input type="file" id="upload_model" webkitdirectory multiple /></h1>
+        <h1>Please select a content image<input type="file" id="upload_content" accept=".jpg, .jpeg"  /></h1>
+        <h1>Please select style images<input type="file" id="upload_styles" webkitdirectory multiple accept=".jpg, .jpeg" /></h1>
+        <button id="btn_gen">generate</button> 
+        <button id="btn_download">download</button>
+        <div class="mask" style="display:none" id="con_mask">generating images</div>
+    </div>
+    <h2 id="el_info"></h2>
+    <div class="con">
+        <h1>Content</h1>
+        <div class='image_list' id="con_content"></div>
+    </div>
+    <div class="con">
+        <h1>Styles</h1>
+        <div class='image_list style_list' id="con_style"></div>
+    </div>
+    <div class="con">
+        <h1>Outputs</h1>
+        <div class='image_list' id="con_outputs"></div>
+    </div>
+    <a style="display:none" id="href_download"></a>
+    <script src="./tools.ts"></script>
+</body>
+</html>
